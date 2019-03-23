@@ -1,22 +1,24 @@
-class Solr66 < Formula
+class Solr665 < Formula
   desc "Enterprise search platform from the Apache Lucene project"
   homepage "https://lucene.apache.org/solr/"
   url "https://www.apache.org/dyn/closer.cgi?path=lucene/solr/6.6.5/solr-6.6.5.tgz"
-  sha256 "fa65e922bc32d36ef65bee866095da563aa5ddd7e953798c06b6494572d51729"
+  mirror "https://archive.apache.org/dist/lucene/solr/6.6.5/solr-6.6.5.tgz"
+  sha256 "74630a06d45eb44c0afe2bfb6e2cd80c9d8d92aa0c48a563e39c32996a76c8b0"
 
   bottle :unneeded
-
-  keg_only :versioned_formula
 
   depends_on :java
 
   skip_clean "example/logs"
 
   def install
-    bin.install %w[bin/solr bin/post bin/oom_solr.sh]
-    pkgshare.install "bin/solr.in.sh"
-    prefix.install %w[example server]
     libexec.install Dir["*"]
+    bin.install "#{libexec}/bin/solr"
+    bin.install "#{libexec}/bin/post"
+    bin.install "#{libexec}/bin/oom_solr.sh"
+    share.install "#{libexec}/bin/solr.in.sh"
+    prefix.install "#{libexec}/example"
+    prefix.install "#{libexec}/server"
 
     # Fix the classpath for the post tool
     inreplace "#{bin}/post", '"$SOLR_TIP/dist"', "#{libexec}/dist"
@@ -31,8 +33,7 @@ class Solr66 < Formula
 
   plist_options :manual => "solr start"
 
-  def plist
-    <<~EOS
+  def plist; <<-EOS.undent
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
       <plist version="1.0">
