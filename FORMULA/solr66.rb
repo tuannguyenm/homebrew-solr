@@ -3,7 +3,7 @@ class Solr66 < Formula
   homepage "https://lucene.apache.org/solr/"
   url "https://www.apache.org/dyn/closer.cgi?path=lucene/solr/6.6.5/solr-6.6.5.tgz"
   mirror "https://archive.apache.org/dist/lucene/solr/6.6.5/solr-6.6.5.tgz"
-  sha256 "fa65e922bc32d36ef65bee866095da563aa5ddd7e953798c06b6494572d51729"
+  sha256 "74630a06d45eb44c0afe2bfb6e2cd80c9d8d92aa0c48a563e39c32996a76c8b0"
 
   bottle :unneeded
 
