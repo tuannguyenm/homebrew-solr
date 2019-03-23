@@ -1,4 +1,4 @@
-class SolrAT665 < Formula
+class SolrAT66 < Formula
   desc "Enterprise search platform from the Apache Lucene project"
   homepage "https://lucene.apache.org/solr/"
   url "https://www.apache.org/dyn/closer.cgi?path=lucene/solr/6.6.5/solr-6.6.5.tgz"
@@ -29,7 +29,7 @@ class SolrAT665 < Formula
     end
   end
 
-  plist_options :manual => "#{HOMEBREW_PREFIX}/opt/solr@6.6.5/bin/solr start"
+  plist_options :manual => "solr start"
 
   def plist
     <<~EOS
